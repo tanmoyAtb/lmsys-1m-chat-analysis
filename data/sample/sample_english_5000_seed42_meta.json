@@ -1,0 +1,20 @@
+{
+  "source": "lmsys/lmsys-chat-1m",
+  "source_revision": "200748d9d3cddcc9d782887541057aca0b18c5da",
+  "created_utc": "2026-11-19T11:26:55+00:00",
+  "method": "uniform random sample without replacement over sorted conversation_ids after language filter; numpy default_rng(seed).choice",
+  "language_filter": "English",
+  "seed": 42,
+  "n": 5000,
+  "pool_size": 777453,
+  "dataset_size": 1000000,
+  "columns": [
+    "conversation_id",
+    "model",
+    "conversation",
+    "turn",
+    "language",
+    "openai_moderation",
+    "redacted"
+  ]
+}

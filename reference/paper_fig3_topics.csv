@@ -1,0 +1,21 @@
+cluster,label,category,percent
+1,Discussing software errors and solutions,Technical and Software-related,10.43
+2,"Inquiries about AI tools, software design, and programming",Technical and Software-related,7.29
+3,"Geography, travel, and global cultural inquiries","Cultural, Social, and Geographical",6.96
+4,Requests for summarizing and elaborating texts,Language and Content Creation,6.83
+5,Creating and improving business strategies and products,Business and Specific Inquiries,6.36
+6,Requests for Python coding assistance and examples,Technical and Software-related,6.14
+7,"Requests for text translation, rewriting, and summarization",Language and Content Creation,6.06
+8,Role-playing various characters in conversations,Language and Content Creation,5.83
+9,Requests for explicit and erotic storytelling,Explicit Content,5.71
+10,Answering questions based on passages,Language and Content Creation,5.59
+11,Discussing and describing various characters,Language and Content Creation,5.44
+12,Generating brief sentences for various job roles,Business and Specific Inquiries,4.93
+13,Role-playing and capabilities of AI chatbots,Language and Content Creation,4.44
+14,Requesting introductions for various chemical companies,Business and Specific Inquiries,4.00
+15,Explicit sexual fantasies and role-playing scenarios,Explicit Content,3.91
+16,Generating and interpreting SQL queries from data,Technical and Software-related,3.50
+17,Discussing toxic behavior across different identities,"Cultural, Social, and Geographical",2.66
+18,Requests for Python coding examples and outputs,Technical and Software-related,2.28
+19,Determining factual consistency in document summaries,Language and Content Creation,1.17
+20,Inquiries about specific plant growth conditions,Business and Specific Inquiries,0.47

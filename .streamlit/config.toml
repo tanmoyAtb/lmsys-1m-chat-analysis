@@ -1,0 +1,8 @@
+[theme]
+# Smaller, denser UI (Streamlit default is 16px)
+baseFontSize = 14
+headingFontSizes = ["1.6rem", "1.3rem", "1.1rem", "1rem", "0.95rem", "0.9rem"]
+codeFontSize = "0.8rem"
+
+[client]
+toolbarMode = "minimal"

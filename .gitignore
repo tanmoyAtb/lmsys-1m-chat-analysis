@@ -1,0 +1,20 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Secrets
+.env
+
+# Data: raw dataset is large (scripts/download_data.sh); the sample is committed
+data/*
+!data/sample/
+
+# macOS
+.DS_Store
