@@ -1,0 +1,109 @@
+# Which of the paper's 20 topics each of our clusters is the SAME topic as.
+# Proposed by the LLM (scripts/match_paper_topics.py); REVIEW and edit `paper_topic`:
+# a paper cluster number (1-20), or none. Several clusters may share one paper topic.
+#
+# Paper topics:
+#    1. Discussing software errors and solutions
+#    2. Inquiries about AI tools, software design, and programming
+#    3. Geography, travel, and global cultural inquiries
+#    4. Requests for summarizing and elaborating texts
+#    5. Creating and improving business strategies and products
+#    6. Requests for Python coding assistance and examples
+#    7. Requests for text translation, rewriting, and summarization
+#    8. Role-playing various characters in conversations
+#    9. Requests for explicit and erotic storytelling
+#   10. Answering questions based on passages
+#   11. Discussing and describing various characters
+#   12. Generating brief sentences for various job roles
+#   13. Role-playing and capabilities of AI chatbots
+#   14. Requesting introductions for various chemical companies
+#   15. Explicit sexual fantasies and role-playing scenarios
+#   16. Generating and interpreting SQL queries from data
+#   17. Discussing toxic behavior across different identities
+#   18. Requests for Python coding examples and outputs
+#   19. Determining factual consistency in document summaries
+#   20. Inquiries about specific plant growth conditions
+
+A:  # prompt-level clusters (see clusters_A.md)
+  1:  # ours: Technical Software and IT Assistance (10.62%)
+    paper_topic: 2  # Inquiries about AI tools, software design, and programming | LLM: medium - Most examples ask about AI models, software tools, programming, or IT setup, though several are unrelated product-code inquiries.
+  2:  # ours: General Knowledge and Travel Questions (8.96%)
+    paper_topic: 3  # Geography, travel, and global cultural inquiries | LLM: medium - Most examples ask about countries, cities, travel destinations, itineraries, or global facts, matching geography and travel inquiries.
+  3:  # ours: Requests for Explanations, Examples, and Summaries (7.6%)
+    paper_topic: none  # no matching paper topic | LLM: medium - The examples mostly request general explanations, examples, or sources rather than the specific text-summary or software-focused requests in the reference topics.
+  4:  # ours: Business Writing and Content Assistance (6.9%)
+    paper_topic: 5  # Creating and improving business strategies and products | reviewed: changed from LLM proposal
+  5:  # ours: Chatbot Roleplay and Persona Customization (6.67%)
+    paper_topic: 13  # Role-playing and capabilities of AI chatbots | LLM: high - Most examples ask the chatbot to adopt a persona, role-play, or follow customized response behavior.
+  6:  # ours: Classifying Behaviors as Acceptable or Wrong (6.56%)
+    paper_topic: none  # no matching paper topic | LLM: high - The examples mix varied benchmark tasks and do not consistently match any reference topic, including toxic behavior across identities.
+  7:  # ours: Creative Writing and Storytelling Requests (5.9%)
+    paper_topic: none  # no matching paper topic | LLM: high - The examples are mostly general creative-writing requests, which do not clearly match any of the reference clusters’ more specific topics.
+  8:  # ours: Python Programming Help and Code Generation (5.84%)
+    paper_topic: 6  # Requests for Python coding assistance and examples | LLM: high - Most prompts ask for Python coding help or code generation, without emphasizing code outputs.
+  9:  # ours: Requests for Explicit Erotic Fiction and Roleplay (5.83%)
+    paper_topic: 9  # Requests for explicit and erotic storytelling | LLM: high - Most examples request explicit erotic stories, matching the reference topic on explicit and erotic storytelling.
+  10:  # ours: Elementary Math and Logic Word Problems (5.51%)
+    paper_topic: none  # no matching paper topic | LLM: high - These are elementary arithmetic and logic problems, which do not match any listed reference topic.
+  11:  # ours: Questions and Creative Requests About Named Entities (5.19%)
+    paper_topic: 11  # Discussing and describing various characters | LLM: medium - Most prompts ask about, compare, describe, or create content involving named characters; role-play is only a subset.
+  12:  # ours: Structured Information Extraction from Text (4.82%)
+    paper_topic: none  # no matching paper topic | LLM: high - The examples primarily request structured information extraction and classification in JSON, which does not clearly match any reference topic.
+  13:  # ours: Chatbot Instructions and Jailbreak Prompts (4.61%)
+    paper_topic: 13  # Role-playing and capabilities of AI chatbots | LLM: high - Most examples instruct, test, or jailbreak an AI chatbot, matching the reference topic on chatbot role-playing and capabilities.
+  14:  # ours: Requests for Toxic Responses in Everyday Situations (3.06%)
+    paper_topic: 17  # Discussing toxic behavior across different identities | LLM: high - The prompts repeatedly request toxic responses across everyday situations and identities, matching the reference topic.
+  15:  # ours: Assistant Identity and Python Help (2.86%)
+    paper_topic: 18  # Requests for Python coding examples and outputs | LLM: high - Most prompts request Python coding examples and their outputs, matching reference topic 18.
+  16:  # ours: General Multilingual AI Assistance Requests (2.68%)
+    paper_topic: none  # no matching paper topic | LLM: high - The examples span unrelated requests—translation, summaries, creative writing, technical questions, and roleplay—so no single reference topic clearly fits most of them.
+  17:  # ours: Chemical Industry Articles on Organic Compounds (2.34%)
+    paper_topic: none  # no matching paper topic | LLM: high - These prompts request articles about organic compounds’ production, applications, and supply chains, not introductions to chemical companies.
+  18:  # ours: Long-Form Introductions for Chemical Companies (2.14%)
+    paper_topic: 14  # Requesting introductions for various chemical companies | LLM: high - The examples consistently request long introductions for chemical companies, matching the reference topic about introductions for chemical companies.
+  19:  # ours: Fact-Checking Summaries Against Source Documents (1.28%)
+    paper_topic: 19  # Determining factual consistency in document summaries | LLM: high - These prompts explicitly ask whether a summary is factually consistent with its source document.
+  20:  # ours: Plant Seed Growing Requirements and Botanical Information (0.64%)
+    paper_topic: 20  # Inquiries about specific plant growth conditions | LLM: high - The prompts consistently request growing conditions and planting requirements for specific plant seeds.
+
+B:  # conversation-level clusters (see clusters_B.md)
+  1:  # ours: General Technical and Information Assistance (8.98%)
+    paper_topic: none  # no matching paper topic | LLM: high - The examples span unrelated technical, medical, writing, and information requests, with no single reference topic clearly covering most of them.
+  2:  # ours: Miscellaneous General Knowledge and Everyday Questions (8.72%)
+    paper_topic: none  # no matching paper topic | LLM: high - The examples span unrelated everyday questions, and travel or geography prompts do not make up a clear majority.
+  3:  # ours: AI Prompting, Roleplay, and Instruction-Following (8.19%)
+    paper_topic: 13  # Role-playing and capabilities of AI chatbots | LLM: medium - Most examples instruct an AI chatbot to adopt roles, follow prompts, or demonstrate its capabilities, rather than simply requesting character role-play.
+  4:  # ours: Writing, Editing, and Content Generation Requests (6.65%)
+    paper_topic: 5  # Creating and improving business strategies and products | reviewed: changed from LLM proposal
+  5:  # ours: Everyday Math, Logic, and Reasoning Questions (6.51%)
+    paper_topic: none  # no matching paper topic | LLM: high - Most examples are general arithmetic, logic, and reasoning questions, which do not match any listed reference topic.
+  6:  # ours: Explicit Erotica and Sexual Roleplay Requests (5.84%)
+    paper_topic: 9  # Requests for explicit and erotic storytelling | LLM: medium - Most examples request explicit erotic stories, though a few are framed as sexual role-play or fantasy scenarios.
+  7:  # ours: General Knowledge and Writing Assistance (5.79%)
+    paper_topic: none  # no matching paper topic | LLM: high - The examples mix general explanations, skill lists, technical questions, and writing tasks, so no single reference topic fits most of them.
+  8:  # ours: Creative Writing and Story Generation (5.58%)
+    paper_topic: none  # no matching paper topic | LLM: high - The examples mostly request general creative writing and story generation, which is not a distinct reference topic; erotic storytelling is only a subset.
+  9:  # ours: Text Extraction and Structured NLP Tasks (5.3%)
+    paper_topic: none  # no matching paper topic | LLM: high - The examples mostly request structured information extraction and text labeling, rather than passage-based question answering or another listed topic.
+  10:  # ours: Generating Toxic Remarks for Everyday Situations (4.95%)
+    paper_topic: 17  # Discussing toxic behavior across different identities | LLM: high - The prompts repeatedly request toxic remarks, often conditioned on identity, matching the topic of toxic behavior across different identities.
+  11:  # ours: Programming Help and Code Generation (4.82%)
+    paper_topic: 2  # Inquiries about AI tools, software design, and programming | LLM: high - The examples primarily request general programming help and code generation across multiple languages, rather than Python-specific assistance.
+  12:  # ours: Python Programming Help and Code Examples (4.75%)
+    paper_topic: 18  # Requests for Python coding examples and outputs | reviewed: changed from LLM proposal
+  13:  # ours: Questions About AI and Language Models (4.58%)
+    paper_topic: 2  # Inquiries about AI tools, software design, and programming | LLM: medium - Most prompts ask factual questions about AI tools, technologies, and language models rather than role-playing an AI chatbot.
+  14:  # ours: Questions and Creative Requests About Named Entities (4.4%)
+    paper_topic: 11  # Discussing and describing various characters | LLM: medium - Most prompts ask about, compare, or create content involving named people and fictional characters, matching the character discussion topic.
+  15:  # ours: Chemical Industry Profiles of Specialty Compounds (3.86%)
+    paper_topic: none  # no matching paper topic | LLM: high - These prompts request articles about specific compounds and their production, applications, or supply chains—not introductions to chemical companies.
+  16:  # ours: Company Introductions for Chemical Businesses (3.56%)
+    paper_topic: 14  # Requesting introductions for various chemical companies | LLM: high - The prompts repeatedly request introductions for named chemical companies using the same template.
+  17:  # ours: Python Coding Help and Examples (3.54%)
+    paper_topic: 6  # Requests for Python coding assistance and examples | LLM: high - The prompts broadly request Python programming help, code generation, explanations, and examples, matching topic 6.
+  18:  # ours: Fact-Checking Summaries Against Source Documents (2.12%)
+    paper_topic: 19  # Determining factual consistency in document summaries | LLM: high - The prompts consistently ask whether a summary is factually consistent with a source document.
+  19:  # ours: Seed-Growing Conditions for Plant Species (0.93%)
+    paper_topic: 20  # Inquiries about specific plant growth conditions | LLM: high - The examples repeatedly ask for environmental and soil conditions for growing specific plant seeds, matching inquiries about plant growth conditions.
+  20:  # ours: Jailbreak Prompts for Harmful Content and GPT Definitions (0.93%)
+    paper_topic: 17  # Discussing toxic behavior across different identities | LLM: medium - Most prompts ask for toxic or harmful commentary, matching the toxic-behavior theme, though they use a jailbreak template and often target actions rather than identities.
