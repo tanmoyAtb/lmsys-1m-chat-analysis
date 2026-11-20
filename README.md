@@ -1,10 +1,10 @@
 # LMSYS-Chat-1M Analysis
 
-In this study, I analyzed the LMSYS-Chat-1M dataset. The original paper ([Zheng et al., 2023](https://arxiv.org/html/2309.11998v4)) clustered the user prompts of 100,000 sampled conversations into 20 topics and grouped them into 5 categories. I noticed that many of these topics overlapped, for example "Python coding assistance" and "Python coding examples and outputs", which made me wonder whether whole conversations would produce better topics than single prompts. I also compared three ways of categorizing: human labels on a small set, LLM labels, and clustering. Finally, I explored attributes of the models' replies and how safely the models behaved.
+In this study, I analyzed the LMSYS-Chat-1M dataset. The original paper ([Zheng et al., 2023](https://arxiv.org/html/2309.11998v4)) clustered the user prompts of 100,000 sampled conversations into 20 topics and grouped them into 5 categories. I noticed that many of these topics overlapped, for example "Python coding assistance" and "Python coding examples and outputs", which made me wonder whether whole conversations would produce better topics than single prompts. I also compared three ways of categorizing, namely human labels on a small set, LLM labels and clustering. Finally, I explored attributes of the models' replies and how safely the models behaved.
 
 ## Data
 
-I randomly sampled 5,000 English conversations. For my own labeling I took 100: 60 at random and 40 chosen through the dataset's OpenAI moderation flags, where the attributes would appear more often. Following the paper, prompts under 32 or over 1,536 characters were excluded from clustering, leaving 7,135 prompts from 4,299 conversations for clustering.
+I randomly sampled 5,000 English conversations. For my own labeling I took 100 of them, 60 at random and 40 chosen through the dataset's OpenAI moderation flags, where the attributes would appear more often. Following the paper, prompts under 32 or over 1,536 characters were excluded from clustering, leaving 7,135 prompts from 4,299 conversations for clustering.
 
 ## Methods
 
@@ -20,7 +20,7 @@ To compare with the paper, I ran k-means (k = 20) on user prompts embedded with 
 
 **Categories.** Human and LLM agreed substantially (κ = 0.70), most likely because they shared definitions. Clustering, which runs unsupervised, agreed only moderately (κ = 0.45–0.47). Language and Content Creation was the largest category (33%). Business and Specific Inquiries exceeded the paper's share (21% vs 16%), most likely because my definitions put general-knowledge questions there.
 
-**Attributes and safety.** The attributes were rare (under 5% each) and depended strongly on the model: vicuna-33b was the most sycophantic and harmful, and llama-2-13b-chat the most anthropomorphic. Models prevented unsafe content only 54% of the time, and those that prevented less also gave more sycophantic and harmful replies, so these problems tend to come together. OpenAI's moderation flags missed 57% of the unsafe conversations, so the flags alone cannot find them.
+**Attributes and safety.** The attributes were rare (under 5% each) and depended strongly on the model, with vicuna-33b the most sycophantic and harmful and llama-2-13b-chat the most anthropomorphic. Models prevented unsafe content only 54% of the time, and those that prevented less also gave more sycophantic and harmful replies, so these problems tend to come together. OpenAI's moderation flags missed 57% of the unsafe conversations, so the flags alone cannot find them.
 
 ## Lessons
 
