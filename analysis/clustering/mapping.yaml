@@ -1,0 +1,95 @@
+# Map each k-means cluster to one of the 6 categories (exact names below).
+# Fill in category using only clusters_A.md / clusters_B.md,
+# before looking at any comparison numbers. One category per cluster.
+#
+# Categories:
+#   - Technical and Software-related
+#   - Cultural, Social, and Geographical
+#   - Language and Content Creation
+#   - Business and Specific Inquiries
+#   - Explicit Content
+#   - Others
+
+A: # prompt-level clusters (see clusters_A.md)
+  1: # Technical Software and IT Assistance (10.62%)
+    category: Technical and Software-related
+  2: # General Knowledge and Travel Questions (8.96%)
+    category: Cultural, Social, and Geographical
+  3: # Requests for Explanations, Examples, and Summaries (7.6%)
+    category: Language and Content Creation
+  4: # Business Writing and Content Assistance (6.9%)
+    category: Business and Specific Inquiries
+  5: # Chatbot Roleplay and Persona Customization (6.67%)
+    category: Language and Content Creation
+  6: # Classifying Behaviors as Acceptable or Wrong (6.56%)
+    category: Language and Content Creation
+  7: # Creative Writing and Storytelling Requests (5.9%)
+    category: Language and Content Creation
+  8: # Python Programming Help and Code Generation (5.84%)
+    category: Technical and Software-related
+  9: # Requests for Explicit Erotic Fiction and Roleplay (5.83%)
+    category: Explicit Content
+  10: # Elementary Math and Logic Word Problems (5.51%)
+    category: Technical and Software-related
+  11: # Questions and Creative Requests About Named Entities (5.19%)
+    category: Language and Content Creation
+  12: # Structured Information Extraction from Text (4.82%)
+    category: Language and Content Creation
+  13: # Chatbot Instructions and Jailbreak Prompts (4.61%)
+    category: Language and Content Creation
+  14: # Requests for Toxic Responses in Everyday Situations (3.06%)
+    category: Cultural, Social, and Geographical
+  15: # Assistant Identity and Python Help (2.86%)
+    category: Language and Content Creation
+  16: # General Multilingual AI Assistance Requests (2.68%)
+    category: Language and Content Creation
+  17: # Chemical Industry Articles on Organic Compounds (2.34%)
+    category: Business and Specific Inquiries
+  18: # Long-Form Introductions for Chemical Companies (2.14%)
+    category: Business and Specific Inquiries
+  19: # Fact-Checking Summaries Against Source Documents (1.28%)
+    category: Language and Content Creation
+  20: # Plant Seed Growing Requirements and Botanical Information (0.64%)
+    category: Business and Specific Inquiries
+
+B: # conversation-level clusters (see clusters_B.md)
+  1: # General Technical and Information Assistance (8.98%)
+    category: Technical and Software-related
+  2: # Miscellaneous General Knowledge and Everyday Questions (8.72%)
+    category: Business and Specific Inquiries
+  3: # AI Prompting, Roleplay, and Instruction-Following (8.19%)
+    category: Language and Content Creation
+  4: # Writing, Editing, and Content Generation Requests (6.65%)
+    category: Business and Specific Inquiries
+  5: # Everyday Math, Logic, and Reasoning Questions (6.51%)
+    category: Technical and Software-related
+  6: # Explicit Erotica and Sexual Roleplay Requests (5.84%)
+    category: Explicit Content
+  7: # General Knowledge and Writing Assistance (5.79%)
+    category: Language and Content Creation
+  8: # Creative Writing and Story Generation (5.58%)
+    category: Language and Content Creation
+  9: # Text Extraction and Structured NLP Tasks (5.3%)
+    category: Language and Content Creation
+  10: # Generating Toxic Remarks for Everyday Situations (4.95%)
+    category: Cultural, Social, and Geographical
+  11: # Programming Help and Code Generation (4.82%)
+    category: Technical and Software-related
+  12: # Python Programming Help and Code Examples (4.75%)
+    category: Technical and Software-related
+  13: # Questions About AI and Language Models (4.58%)
+    category: Technical and Software-related
+  14: # Questions and Creative Requests About Named Entities (4.4%)
+    category: Language and Content Creation
+  15: # Chemical Industry Profiles of Specialty Compounds (3.86%)
+    category: Business and Specific Inquiries
+  16: # Company Introductions for Chemical Businesses (3.56%)
+    category: Business and Specific Inquiries
+  17: # Python Coding Help and Examples (3.54%)
+    category: Technical and Software-related
+  18: # Fact-Checking Summaries Against Source Documents (2.12%)
+    category: Language and Content Creation
+  19: # Seed-Growing Conditions for Plant Species (0.93%)
+    category: Business and Specific Inquiries
+  20: # Jailbreak Prompts for Harmful Content and GPT Definitions (0.93%)
+    category: Cultural, Social, and Geographical
