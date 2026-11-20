@@ -1,0 +1,94 @@
+% Overview of the LMSYS-Chat-1M analysis (same content as README.md).
+% Build: xelatex overview.tex   (needs the Arial font)
+\documentclass[10pt]{article}
+\usepackage[a4paper,top=1.5cm,bottom=1.4cm,left=1.85cm,right=1.85cm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Arial}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xurl}
+\usepackage[colorlinks=true,urlcolor=linkblue,linkcolor=linkblue]{hyperref}
+
+\definecolor{ink}{HTML}{1A1A1A}
+\definecolor{muted}{HTML}{5F5E5A}
+\definecolor{rulecolor}{HTML}{C9C8C2}
+\definecolor{heading}{HTML}{1F3A5F}
+\definecolor{linkblue}{HTML}{1F5FA8}
+
+\pagestyle{empty}
+\color{ink}
+\linespread{1.08}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4.5pt}
+\raggedbottom
+\emergencystretch=1.5em
+
+\titleformat{\section}{\fontsize{12}{14}\bfseries\color{heading}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{7pt}{1pt}
+\setlist[itemize]{leftmargin=1.1em,topsep=0pt,itemsep=3pt,parsep=0pt,label={\color{muted}\textbullet}}
+
+% one chart with a small caption underneath
+\newcommand{\chart}[3]{%
+  {\centering\includegraphics[width=\textwidth,height=#1,keepaspectratio]{#2}\par}
+  \vspace{1pt}
+  {\centering\footnotesize\color{muted}#3\par}
+  \vspace{14pt}}
+
+\begin{document}
+
+{\fontsize{19}{22}\bfseries\color{heading}LMSYS-Chat-1M Analysis\par}
+\vspace{6pt}
+{\color{rulecolor}\hrule height 0.5pt}
+\vspace{8pt}
+
+In this study, I analyzed the LMSYS-Chat-1M dataset. The original paper (\href{https://arxiv.org/html/2309.11998v4}{Zheng et al., 2023}) clustered the user prompts of 100,000 sampled conversations into 20 topics and grouped them into 5 categories. I noticed that many of these topics overlapped, for example ``Python coding assistance'' and ``Python coding examples and outputs'', which made me wonder whether whole conversations would produce better topics than single prompts. I also compared three ways of categorizing: human labels on a small set, LLM labels, and clustering. Finally, I explored attributes of the models' replies and how safely the models behaved.
+
+\section*{Data}
+
+I randomly sampled 5,000 English conversations. For my own labeling I took 100: 60 at random and 40 chosen through the dataset's OpenAI moderation flags, where the attributes would appear more often. Following the paper, prompts under 32 or over 1,536 characters were excluded from clustering, leaving 7,135 prompts from 4,299 conversations for clustering.
+
+\section*{Methods}
+
+I first built a small app to read conversations and make a plan. Small talk and greetings fit none of the paper's five categories, so I added \emph{Others}. For attributes of the replies, besides anthropomorphism, sycophancy and fear-inducing language, I added \emph{harmful}, as some replies promoted violence, crime or self-harm. Some models refused unsafe requests while others went along with them, so I added \emph{prevent unsafe content} to compare how safe the models were.
+
+I then wrote one set of annotation rules for human and AI, and revised it until the definitions no longer overlapped. I labeled the 100 conversations myself, and gpt-6-luna labeled all 5,000 with the same rules.
+
+To compare with the paper, I ran k-means (k = 20) on user prompts embedded with all-mpnet-base-v2, as the paper did, and again on whole conversations, using the average of each conversation's prompts. An LLM named the clusters, using the paper's name where a topic matched. I then mapped every cluster to a category by hand.
+
+\section*{Results}
+
+\textbf{Topics.} Prompt clustering found 12 of the paper's 20 topics and conversation clustering 11, at similar sizes, so the paper's topic structure holds even in a 5,000 sample. As clustering follows wording, near-duplicate prompts like the chemical company introductions became topics of their own. Whole conversations did not give cleaner topics; averaging their prompts produced several broad, mixed clusters.
+
+\textbf{Categories.} Human and LLM agreed substantially (κ~=~0.70), most likely because they shared definitions. Clustering, which runs unsupervised, agreed only moderately (κ~=~\mbox{0.45–0.47}). Language and Content Creation was the largest category (33\%) and Explicit Content the smallest of the paper's five (6\%). Business and Specific Inquiries exceeded the paper's share (21\% vs 16\%), most likely because my definitions put general-knowledge questions there.
+
+\textbf{Attributes and safety.} The attributes were rare (under 5\% each) and depended strongly on the model: \mbox{vicuna-33b} was the most sycophantic and harmful, and \mbox{llama-2-13b-chat} the most anthropomorphic. Models prevented unsafe content only 54\% of the time, and those that prevented less also gave more sycophantic and harmful replies, so these problems tend to come together. OpenAI's moderation flags missed 57\% of the unsafe conversations, so the flags alone cannot find them.
+
+\section*{Lessons}
+
+\begin{itemize}
+  \item \textbf{Reading the conversations first helped.} My most useful labels and design decisions came from the data.
+  \item \textbf{Testing the definitions improved them.} I first took the category from the first substantive prompt, but topics drift across turns, so I switched to the theme of the whole conversation, which also matches conversation clustering.
+  \item \textbf{The attribute analysis needs more labeled samples.} The attributes are rare, so my 100 labels had few cases to check the LLM against. A larger sample, or more flag-selected conversations, would help.
+\end{itemize}
+
+\vspace{10pt}
+{\color{rulecolor}\hrule height 0.5pt}
+\vspace{2pt}
+
+{\small
+{\color{muted}Repository:} \href{https://github.com/tanmoyAtb/lmsys-1m-chat-analysis}{github.com/tanmoyAtb/lmsys-1m-chat-analysis}\\
+{\color{muted}AI assistant log:} \href{https://github.com/tanmoyAtb/lmsys-1m-chat-analysis/blob/main/ai_assistant_log.txt}{github.com/tanmoyAtb/lmsys-1m-chat-analysis/blob/main/ai\_assistant\_log.txt}\par}
+
+\newpage
+
+\chart{7.2cm}{reports/figures/00b_matched_topics.png}{The paper's 20 topics in my prompt and conversation clustering. Matching topics share the paper's names; ``–'' means no matching cluster.}
+
+\chart{5.2cm}{reports/figures/02_category_shares.png}{Categories from conversation clustering, the LLM and my labels (the 4,299 conversations that can be clustered).}
+
+\chart{4.0cm}{reports/figures/04a_human_vs_llm_same_100.png}{Human vs LLM on the same 100 conversations.}
+
+\chart{5.2cm}{reports/figures/06_prevention_by_model.png}{Unsafe-content prevention by model (models with at least 20 unsafe requests; bars show 95\% confidence intervals).}
+
+\end{document}
