@@ -1,0 +1,22 @@
+{
+  "source": "sample_english_5000_seed42.parquet",
+  "seed": 42,
+  "created_utc": "2026-11-19T12:31:14+00:00",
+  "random60": "uniform random sample without replacement from the 5,000 sample (sorted ids, numpy default_rng(seed).choice)",
+  "flagged40": "conversations with >=1 OpenAI-moderation-flagged message, excluding random60; stratified round-robin over flagged categories (rarest first), random within category",
+  "flagged_pool_size": 323,
+  "random60_flagged_count": 5,
+  "flagged40_category_coverage": {
+    "harassment": 20,
+    "sexual": 18,
+    "violence": 17,
+    "harassment/threatening": 13,
+    "hate": 11,
+    "sexual/minors": 11,
+    "self-harm/instructions": 7,
+    "hate/threatening": 6,
+    "self-harm": 5,
+    "self-harm/intent": 4,
+    "violence/graphic": 2
+  }
+}
